@@ -1,0 +1,193 @@
+/* ==========================================================================
+   سیستم مدیریت و نمایش فعالیت‌های شرکت
+   فایل استایل‌های اصلی (Main Stylesheet)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ۱. متغیرهای سراسری سیستم (Design Tokens / CSS Variables)
+   -------------------------------------------------------------------------- */
+:root {
+  /* پالت رنگی شرکتی و رسمی (Corporate Palette) */
+  --color-primary-900: #0b1329;       /* سرمه‌ای بسیار تیره / بدنه و هدر */
+  --color-primary-800: #111e38;       /* سرمه‌ای تیره */
+  --color-primary: #1e293b;           /* سرمه‌ای پایه شرکتی */
+  --color-primary-600: #334155;       /* سرمه‌ای ملایم / مردرنگ */
+  
+  --color-brand-blue: #1d4ed8;        /* آبی رسمی شرکتی */
+  --color-brand-blue-hover: #1e40af;  /* حالت هاور آبی شرکتی */
+  --color-brand-blue-light: #eff6ff;  /* پس‌زمینه لطیف آبی */
+  --color-brand-cyan: #0284c7;        /* آبی فیروزه‌ای تاکیدی */
+
+  /* وضعیت‌ها و نشانگرها (Status Colors) */
+  --color-success: #10b981;
+  --color-success-bg: #ecfdf5;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #fffbeb;
+  --color-danger: #ef4444;
+  --color-danger-bg: #fef2f2;
+  --color-info: #0284c7;
+  --color-info-bg: #f0f9ff;
+
+  /* سطوح و پس‌زمینه‌ها (Backgrounds & Surfaces) */
+  --bg-page: #f8fafc;                 /* خاکستری بسیار روشن و خنثی برای بدنه */
+  --bg-surface: #ffffff;              /* سفید خالص برای کارت‌ها و سطوح */
+  --bg-surface-subtle: #f1f5f9;       /* خاکستری محو برای بخش‌های ثانویه */
+  --bg-surface-elevated: #ffffff;     /* المان‌های شناور و منوها */
+  --bg-header: rgba(15, 23, 42, 0.95); /* سرمه‌ای تیره با شفافیت ملایم */
+
+  /* متن‌ها و تایپوگرافی (Text & Typography) */
+  --text-main: #0f172a;               /* رنگ اصلی متون تیره و خوانا */
+  --text-muted: #64748b;              /* متون توضیحی و ثانویه */
+  --text-light: #94a3b8;              /* متن‌های راهنما یا غیرفعال */
+  --text-inverse: #ffffff;            /* متن سفید برای پس‌زمینه‌های تیره */
+  --text-brand: #1d4ed8;
+
+  /* خطوط و کادرها (Borders & Dividers) */
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-focus: #3b82f6;
+
+  /* سایه‌ها (Elevation Shadows) */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 35px -8px rgba(15, 23, 42, 0.12);
+
+  /* انحناها (Border Radii) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* فاصله‌ها و ابعاد (Dimensions) */
+  --container-max-width: 1280px;
+  --header-height: 72px;
+
+  /* فونت و فاصله‌بندی متنی (Typography) */
+  --font-family-base: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-smooth: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   ۲. بازنشانی و استایل‌های پایه (Reset & Base CSS)
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--font-family-base);
+  font-size: 0.975rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* لینک‌ها و دکمه‌ها */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img, svg, picture, video {
+  display: block;
+  max-width: 100%;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* کانتینر اصلی صفحه */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   ۳. اسکلت‌بندی ساختار صفحه (Layout: Header, Main, Footer)
+   -------------------------------------------------------------------------- */
+
+/* هدر سایت */
+.site-header {
+  height: var(--header-height);
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* بخش اصلی صفحه */
+.site-main {
+  flex: 1 0 auto;
+  padding: 3rem 0;
+}
+
+/* فوتر سایت */
+.site-footer {
+  margin-top: auto;
+  background-color: var(--color-primary-900);
+  color: var(--text-inverse);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem 0;
+}
+
+.site-footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
