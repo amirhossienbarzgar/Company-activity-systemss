@@ -112,6 +112,7 @@ function initMobileNavigation() {
  * @returns {string}
  */
 function toPersianDigits(num) {
+  if (num === null || num === undefined) return '';
   const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
   return num.toString().replace(/\d/g, (char) => persianDigits[char]);
 }
@@ -190,3 +191,4 @@ function initHeroStatCounters() {
     counterElements.forEach((counter) => startCounterAnimation(counter));
   }
 }
+
