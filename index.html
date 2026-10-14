@@ -19,16 +19,261 @@
 
   <!-- هدر سایت (Site Header) -->
   <header class="site-header" id="siteHeader">
-    <div class="container">
-      <!-- محتوای هدر در گام‌های بعدی پیاده‌سازی خواهد شد -->
+    <div class="container header-container">
+      <!-- ۱. لوگوی شرکت در سمت راست -->
+      <a href="#hero" class="brand-logo" aria-label="صفحه اصلی سامانه پایش فعالیت‌های شرکت">
+        <div class="logo-icon-wrapper">
+          <svg class="logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="44" height="44" rx="12" fill="url(#brandGrad)" />
+            <path d="M12 31L19 16L24.5 24.5L28.5 19L33 31" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="28.5" cy="19" r="2.2" fill="#38bdf8" />
+            <circle cx="19" cy="16" r="2.2" fill="#67e8f9" />
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0f2b5c" />
+                <stop offset="0.5" stop-color="#1d4ed8" />
+                <stop offset="1" stop-color="#0284c7" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">سامانه پایش فعالیت‌ها</span>
+          <span class="brand-subtitle">پرتال جامع سازمانی و مدیریت عملکرد</span>
+        </div>
+      </a>
+
+      <!-- ۲. منوی ناوبری در وسط -->
+      <nav class="main-nav" id="mainNav" aria-label="منوی اصلی ناوبری">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#hero" class="nav-link active">صفحه اصلی</a>
+          </li>
+          <li class="nav-item">
+            <a href="#activities" class="nav-link">گزارش فعالیت‌ها</a>
+          </li>
+          <li class="nav-item">
+            <a href="#projects" class="nav-link">پروژه‌های جاری</a>
+          </li>
+          <li class="nav-item">
+            <a href="#departments" class="nav-link">دپارتمان‌ها</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">تماس با ما</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- ۳. دکمه ورود به پنل کارمندان در سمت چپ + دکمه همبرگری موبایل -->
+      <div class="header-actions">
+        <a href="#login" class="btn btn-primary btn-portal" id="employeePortalBtn">
+          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+            <polyline points="10 17 15 12 10 7" />
+            <line x1="15" y1="12" x2="3" y2="12" />
+          </svg>
+          <span>ورود به پنل کارمندان</span>
+        </a>
+
+        <!-- دکمه منوی همبرگری موبایل -->
+        <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="باز کردن منوی موبایل" aria-expanded="false" aria-controls="mobileMenuDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- منوی کشویی واکنش‌گرا برای موبایل -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+      <div class="mobile-drawer-header">
+        <div class="mobile-drawer-title">
+          <div class="logo-icon-wrapper-sm">
+            <svg viewBox="0 0 44 44" fill="none" width="30" height="30" aria-hidden="true">
+              <rect width="44" height="44" rx="10" fill="#1d4ed8" />
+              <path d="M12 31L19 16L24.5 24.5L28.5 19L33 31" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span>منوی دسترسی سریع</span>
+        </div>
+        <button type="button" class="mobile-drawer-close" id="mobileCloseBtn" aria-label="بستن منو">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+          <li><a href="#hero" class="mobile-nav-link active">صفحه اصلی</a></li>
+          <li><a href="#activities" class="mobile-nav-link">گزارش فعالیت‌ها</a></li>
+          <li><a href="#projects" class="mobile-nav-link">پروژه‌های جاری</a></li>
+          <li><a href="#departments" class="mobile-nav-link">دپارتمان‌ها</a></li>
+          <li><a href="#contact" class="mobile-nav-link">تماس با ما</a></li>
+        </ul>
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <a href="#login" class="btn btn-primary btn-block">
+          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+            <polyline points="10 17 15 12 10 7" />
+            <line x1="15" y1="12" x2="3" y2="12" />
+          </svg>
+          <span>ورود به پنل کارمندان</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- بخش اصلی صفحه (Main Content) -->
   <main class="site-main" id="siteMain">
-    <div class="container">
-      <!-- محتوای اصلی در گام‌های بعدی پیاده‌سازی خواهد شد -->
-    </div>
+    <!-- بخش هیرو (Hero Section) -->
+    <section class="hero-section" id="hero">
+      <!-- نورپردازی و گرادینت‌های پس‌زمینه شناور -->
+      <div class="hero-bg-decorations" aria-hidden="true">
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-grid-pattern"></div>
+      </div>
+
+      <div class="container hero-container">
+        <!-- ستون سمت راست: متن، تیتر جذاب و دکمه‌های اقدام -->
+        <div class="hero-content">
+          <!-- نشانگر برچسب معرفی -->
+          <div class="hero-badge">
+            <span class="badge-status-dot"></span>
+            <span class="badge-text">سامانه هوشمند سازمانی • نگارش ۱۴۰۵</span>
+          </div>
+
+          <!-- عنوان بزرگ و گیرا -->
+          <h1 class="hero-title">
+            سامانه هوشمند
+            <span class="text-gradient">پایش و معرفی</span>
+            فعالیت‌های شرکت
+          </h1>
+
+          <!-- توضیح کوتاه -->
+          <p class="hero-description">
+            پلتفرم یکپارچه و پیشرفته برای رصد زنده و پایش هوشمندانه عملکرد تیم‌ها، ثبت شفاف گزارش‌های پیشرفت، مدیریت منسجم مأموریت‌ها و ارتقای مداوم بهره‌وری در تمامی دپارتمان‌های سازمان.
+          </p>
+
+          <!-- دکمه‌های اقدام (CTA) -->
+          <div class="hero-actions">
+            <a href="#activities" class="btn btn-hero btn-hero-primary" id="viewActivitiesBtn">
+              <span>مشاهده فعالیت‌ها</span>
+              <svg class="btn-icon-right" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </a>
+
+            <a href="#submit-report" class="btn btn-hero btn-hero-secondary" id="submitReportBtn">
+              <svg class="btn-icon-left" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+              </svg>
+              <span>ثبت گزارش جدید</span>
+            </a>
+          </div>
+
+          <!-- ویژگی‌های کلیدی فوری و اعتمادبخش -->
+          <div class="hero-features-list">
+            <div class="hero-feature-item">
+              <span class="feature-icon-check">✓</span>
+              <span>پایش بلادرنگ و بدون وقفه</span>
+            </div>
+            <div class="hero-feature-item">
+              <span class="feature-icon-check">✓</span>
+              <span>داشبورد تحلیلی یکپارچه</span>
+            </div>
+            <div class="hero-feature-item">
+              <span class="feature-icon-check">✓</span>
+              <span>سطوح امنیتی پیشرفته سازمانی</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ستون سمت چپ: ۳ کارت آماری شناور با انیمیشن شمارنده -->
+        <div class="hero-visual">
+          <div class="floating-cards-container">
+            <!-- کارت آماری ۱: پروژه‌های تکمیل‌شده -->
+            <div class="stat-card stat-card-1" data-float="card-1">
+              <div class="stat-card-header">
+                <div class="stat-icon-wrapper stat-icon-emerald">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <span class="stat-pill stat-pill-emerald">رشد سالانه ۲۸٪+</span>
+              </div>
+              <div class="stat-card-body">
+                <div class="stat-counter-wrapper">
+                  <span class="stat-counter" data-target="120" data-prefix="+" data-suffix="">۰</span>
+                </div>
+                <div class="stat-label">پروژه‌های تکمیل‌شده</div>
+                <p class="stat-description">تحویل موفق و مطابق برنامه‌ریزی استراتژیک</p>
+              </div>
+            </div>
+
+            <!-- کارت آماری ۲: فعالیت‌های در جریان -->
+            <div class="stat-card stat-card-2" data-float="card-2">
+              <div class="stat-card-header">
+                <div class="stat-icon-wrapper stat-icon-blue">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                  </svg>
+                </div>
+                <span class="stat-pill stat-pill-pulse">
+                  <span class="pulsing-circle"></span>
+                  در حال اجرا
+                </span>
+              </div>
+              <div class="stat-card-body">
+                <div class="stat-counter-wrapper">
+                  <span class="stat-counter" data-target="45" data-prefix="" data-suffix="">۰</span>
+                </div>
+                <div class="stat-label">فعالیت در جریان</div>
+                <p class="stat-description">هماهنگی فعال میان دپارتمان‌های سازمانی</p>
+              </div>
+            </div>
+
+            <!-- کارت آماری ۳: بهره‌وری سازمانی -->
+            <div class="stat-card stat-card-3" data-float="card-3">
+              <div class="stat-card-header">
+                <div class="stat-icon-wrapper stat-icon-amber">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
+                </div>
+                <span class="stat-pill stat-pill-amber">شاخص کیفی ممتاز</span>
+              </div>
+              <div class="stat-card-body">
+                <div class="stat-counter-wrapper">
+                  <span class="stat-counter" data-target="98" data-prefix="" data-suffix="٪">۰</span>
+                </div>
+                <div class="stat-label">بهره‌وری سازمانی</div>
+                <!-- نوار پیشرفت کوچک مدرن -->
+                <div class="stat-progress-bar" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
+                  <div class="stat-progress-fill" style="width: 98%;"></div>
+                </div>
+                <p class="stat-description">تحقق اهداف کلیدی عملکرد بر اساس KPI</p>
+              </div>
+            </div>
+
+            <!-- هاله نوری پشت کارت‌ها -->
+            <div class="cards-backdrop-glow" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- فوتر سایت (Site Footer) -->
