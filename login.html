@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ورود به پنل کارمندان و مدیریت - سامانه یکپارچه پایش و مدیریت فعالیت‌های شرکت">
+  <title>ورود به پنل کارمندان و مدیریت | سامانه پایش فعالیت‌ها</title>
+
+  <!-- فونت وزیرمتن -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+
+  <!-- استایل‌های اصلی پروژه -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="login-page-body">
+
+  <!-- افکت‌های نوری و دکوراتیو پس‌زمینه -->
+  <div class="login-bg-decorations" aria-hidden="true">
+    <div class="login-blob login-blob-1"></div>
+    <div class="login-blob login-blob-2"></div>
+  </div>
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-brand-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <h1 class="login-title">ورود به پنل سازمانی</h1>
+        <p class="login-subtitle">سامانه هوشمند پایش فعالیت‌ها و مدیریت عملکرد</p>
+      </div>
+
+      <!-- کادر راهنمای اطلاعات دسترسی پیش‌فرض مدیر -->
+      <div class="login-hint-badge" role="region" aria-label="اطلاعات ورود مدیر">
+        <div class="hint-badge-content">
+          <span>🔑 نام کاربری: <strong class="hint-credentials-tag">amir</strong> | رمز: <strong class="hint-credentials-tag">00000</strong></span>
+        </div>
+        <button type="button" class="btn-fill-demo" id="autoFillBtn" title="درج خودکار اطلاعات ورود">
+          تکمیل خودکار
+        </button>
+      </div>
+
+      <!-- پیام‌های وضعیت اعتبارسنجی -->
+      <div id="loginAlertError" class="login-alert login-alert-error" role="alert">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="errorMessageText">نام کاربری یا رمز عبور اشتباه است.</span>
+      </div>
+
+      <div id="loginAlertSuccess" class="login-alert login-alert-success" role="alert">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <span>ورود موفقیت‌آمیز! در حال انتقال به داشبورد مدیریت...</span>
+      </div>
+
+      <!-- فرم ورود -->
+      <form id="loginForm" class="login-form" novalidate>
+        <div class="login-group">
+          <label for="usernameInput" class="login-label">
+            <span>نام کاربری</span>
+          </label>
+          <div class="login-input-wrapper">
+            <span class="login-input-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <input type="text" id="usernameInput" class="login-input" placeholder="مثال: amir" autocomplete="username" required dir="ltr">
+          </div>
+        </div>
+
+        <div class="login-group">
+          <label for="passwordInput" class="login-label">
+            <span>رمز عبور</span>
+          </label>
+          <div class="login-input-wrapper">
+            <span class="login-input-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input type="password" id="passwordInput" class="login-input" placeholder="•••••" autocomplete="current-password" required dir="ltr">
+            <button type="button" class="btn-toggle-password" id="togglePasswordBtn" aria-label="نمایش یا پنهان کردن رمز عبور">
+              <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-login-submit" id="loginSubmitBtn">
+          <span>ورود به داشبورد</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </form>
+
+      <div class="login-card-footer">
+        <a href="index.html" class="login-back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>بازگشت به صفحه اصلی پرتال</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // اسکریپت اعتبارسنجی و لاگین مدیر
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('loginForm');
+      const usernameInput = document.getElementById('usernameInput');
+      const passwordInput = document.getElementById('passwordInput');
+      const autoFillBtn = document.getElementById('autoFillBtn');
+      const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+      const alertError = document.getElementById('loginAlertError');
+      const alertSuccess = document.getElementById('loginAlertSuccess');
+      const errorMessageText = document.getElementById('errorMessageText');
+      const submitBtn = document.getElementById('loginSubmitBtn');
+
+      // درج خودکار اطلاعات ورود مدیر
+      autoFillBtn.addEventListener('click', () => {
+        usernameInput.value = 'amir';
+        passwordInput.value = '00000';
+        hideAlerts();
+        usernameInput.focus();
+      });
+
+      // نمایش / مخفی کردن کلمه عبور
+      togglePasswordBtn.addEventListener('click', () => {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+      });
+
+      const hideAlerts = () => {
+        alertError.classList.remove('is-visible');
+        alertSuccess.classList.remove('is-visible');
+      };
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        hideAlerts();
+
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (!username || !password) {
+          errorMessageText.textContent = 'لطفاً نام کاربری و رمز عبور را وارد فرمایید.';
+          alertError.classList.add('is-visible');
+          return;
+        }
+
+        // بررسی مشخصات ست شده برای مدیر: نام کاربری amir و رمز عبور 00000
+        if (username.toLowerCase() === 'amir' && password === '00000') {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>در حال ورود...</span>';
+          alertSuccess.classList.add('is-visible');
+
+          // ذخیره وضعیت لاگین در sessionStorage و زمان شروع جلسه
+          const sessionData = {
+            username: 'amir',
+            name: 'امیرحسین برزگر',
+            role: 'مدیریت ارشد و سرپرست پایش عملکرد',
+            empCode: 'EMP-8801',
+            department: 'مدیریت ارشد و راهبری سازمان',
+            loginTimestamp: Date.now()
+          };
+          sessionStorage.setItem('portalAdminUser', JSON.stringify(sessionData));
+
+          // انتقال به صفحه داشبورد پس از تأخیر کوتاه
+          setTimeout(() => {
+            window.location.href = 'dashbord.html';
+          }, 700);
+        } else {
+          errorMessageText.textContent = 'نام کاربری یا رمز عبور نادرست است. (مدیر: amir | رمز: 00000)';
+          alertError.classList.add('is-visible');
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
