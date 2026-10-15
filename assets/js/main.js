@@ -4,16 +4,17 @@
  * شامل:
  * ۱. پایش اسکرول و مدیریت هدر چسبان (Sticky Glassmorphic Header)
  * ۲. مدیریت باز و بسته شدن منوی همبرگری موبایل (Mobile Navigation Drawer)
- * ۳. انیمیشن شمارنده کارت‌های آماری هیرو (Hero Animated Stat Counters)
+ * ۳. مدیریت ارسال فرم صفحه تماس با ما (Contact Form Submission Handler)
  */
 
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // راه‌اندازی ماژول‌ها
+  // راه‌اندازی ماژول‌ها (سبک، سریع، بدون لود اضافی)
   initStickyHeader();
   initMobileNavigation();
   initHeroStatCounters();
+  initContactForm();
 });
 
 /**
@@ -107,6 +108,57 @@ function initMobileNavigation() {
 }
 
 /**
+ * ۳. مدیریت ارسال فرم تماس با ما (Contact Form Handler)
+ */
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  const alertBox = document.getElementById('formSuccessAlert');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // اعتبارسنجی اولیه فرم
+    const nameInput = document.getElementById('senderName');
+    const contactInput = document.getElementById('senderContact');
+    const messageInput = document.getElementById('messageBody');
+
+    if (!nameInput?.value.trim() || !contactInput?.value.trim() || !messageInput?.value.trim()) {
+      alert('لطفاً فیلدهای ستاره‌دار الزامی را تکمیل فرمایید.');
+      return;
+    }
+
+    // شبیه‌سازی ارسال موفقیت‌آمیز پیام
+    const submitBtn = document.getElementById('submitContactBtn');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>در حال ثبت اطلاعات...</span>';
+    }
+
+    setTimeout(() => {
+      if (alertBox) {
+        alertBox.classList.add('is-visible');
+        alertBox.style.display = 'flex';
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      form.reset();
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `
+          <span>ارسال پیام و ثبت درخواست</span>
+          <svg class="btn-send-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        `;
+      }
+    }, 600);
+  });
+}
+
+/**
  * تبدیل اعداد انگلیسی به اعداد فارسی
  * @param {number|string} num 
  * @returns {string}
@@ -119,15 +171,13 @@ function toPersianDigits(num) {
 
 /**
  * تابع نرم‌کننده حرکتی (Easing function - easeOutExpo)
- * باعث می‌شود شمارش در انتها با ظرافت و آرامش متوقف شود.
  */
 function easeOutExpo(x) {
   return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
 }
 
 /**
- * ۳. انیمیشن شمارنده کارت‌های آماری بخش هیرو (Hero Counter Animation)
- * هنگام ورود سکشن هیرو به دید کاربر، اعداد از صفر تا مقدار هدف با شتاب ملایم شمرده می‌شوند.
+ * ۴. انیمیشن شمارنده کارت‌های آماری بخش هیرو (Hero Counter Animation)
  */
 function initHeroStatCounters() {
   const counterElements = document.querySelectorAll('.stat-counter');
@@ -135,10 +185,6 @@ function initHeroStatCounters() {
 
   const duration = 2000; // مدت‌زمان انیمیشن به میلی‌ثانیه (۲ ثانیه)
 
-  /**
-   * اجرای انیمیشن شمارش برای یک المان مشخص
-   * @param {HTMLElement} el 
-   */
   const startCounterAnimation = (el) => {
     const targetValue = parseInt(el.getAttribute('data-target'), 10) || 0;
     const prefix = el.getAttribute('data-prefix') || '';
@@ -159,7 +205,6 @@ function initHeroStatCounters() {
       if (progress < 1) {
         requestAnimationFrame(updateCounter);
       } else {
-        // تضمین نمایش دقیق مقدار نهایی
         el.textContent = `${prefix}${toPersianDigits(targetValue)}${suffix}`;
       }
     };
@@ -167,13 +212,12 @@ function initHeroStatCounters() {
     requestAnimationFrame(updateCounter);
   };
 
-  // استفاده از IntersectionObserver جهت شروع انیمیشن هنگام نمایان شدن در صفحه
   if ('IntersectionObserver' in window) {
     const statsObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           counterElements.forEach((counter) => startCounterAnimation(counter));
-          observer.disconnect(); // اجرای یکباره پس از مشاهده
+          observer.disconnect();
         }
       });
     }, {
@@ -187,7 +231,6 @@ function initHeroStatCounters() {
       counterElements.forEach((counter) => startCounterAnimation(counter));
     }
   } else {
-    // در صورت عدم پشتیبانی مرورگر از IntersectionObserver
     counterElements.forEach((counter) => startCounterAnimation(counter));
   }
 }
