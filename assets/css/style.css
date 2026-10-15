@@ -287,7 +287,7 @@ ul, ol {
   justify-content: center;
   gap: 0.55rem;
   font-weight: 600;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   transition: all var(--transition-normal);
   text-decoration: none;
   white-space: nowrap;
@@ -616,9 +616,9 @@ ul, ol {
 }
 
 .btn-hero {
-  padding: 0.85rem 1.85rem;
+  padding: 0.85rem 2rem;
   font-size: 1rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   gap: 0.65rem;
 }
 
@@ -696,7 +696,6 @@ ul, ol {
 .hero-visual {
   position: relative;
   width: 100%;
-  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -705,8 +704,12 @@ ul, ol {
 .floating-cards-container {
   position: relative;
   width: 100%;
-  height: 470px;
-  max-width: 530px;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  height: auto;
+  margin: 0 auto;
 }
 
 .cards-backdrop-glow {
@@ -714,9 +717,9 @@ ul, ol {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(2, 132, 199, 0.08) 50%, transparent 75%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(2, 132, 199, 0.05) 50%, transparent 75%);
   filter: blur(55px);
   pointer-events: none;
   z-index: 1;
@@ -724,46 +727,38 @@ ul, ol {
 
 /* کارت آماری پایه */
 .stat-card {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.88);
+  position: relative;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: var(--radius-lg);
-  padding: 1.35rem 1.45rem;
-  box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.09), 0 0 0 1px rgba(226, 232, 240, 0.7);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  padding: 1.25rem 1.45rem;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.6);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   z-index: 2;
   cursor: default;
 }
 
 .stat-card:hover {
-  transform: translateY(-8px) scale(1.02) !important;
-  box-shadow: 0 25px 50px -10px rgba(29, 78, 216, 0.2), 0 0 0 1.5px rgba(59, 130, 246, 0.45) !important;
-  z-index: 10;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 18px 35px -8px rgba(29, 78, 216, 0.16), 0 0 0 1.5px rgba(59, 130, 246, 0.45) !important;
+  border-color: rgba(59, 130, 246, 0.35);
+  z-index: 5;
 }
 
-/* موقعیت‌دهی ۳ کارت شناور در دسکتاپ */
-.stat-card-1 {
-  top: 10px;
-  right: 5px;
-  width: 295px;
-  animation: floatCard1 6.5s ease-in-out infinite;
-}
-
-.stat-card-2 {
-  top: 170px;
-  left: 5px;
-  width: 285px;
-  z-index: 4;
-  animation: floatCard2 7.2s ease-in-out infinite 0.8s;
-}
-
+/* موقعیت‌دهی ۳ کارت به صورت ۳ طبقه منظم زیر هم بدون هم‌پوشانی */
+.stat-card-1,
+.stat-card-2,
 .stat-card-3 {
-  bottom: 10px;
-  right: 35px;
-  width: 310px;
-  animation: floatCard3 6.8s ease-in-out infinite 1.5s;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  animation: none;
 }
 
 /* محتوای داخلی کارت‌ها */
