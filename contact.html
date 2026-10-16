@@ -77,48 +77,48 @@
         </button>
       </div>
     </div>
-
-    <!-- منوی کشویی واکنش‌گرا برای موبایل -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-    <div class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
-      <div class="mobile-drawer-header">
-        <div class="mobile-drawer-title">
-          <div class="logo-icon-wrapper-sm">
-            <svg viewBox="0 0 44 44" fill="none" width="30" height="30" aria-hidden="true">
-              <rect width="44" height="44" rx="10" fill="#1d4ed8" />
-              <path d="M12 31L19 16L24.5 24.5L28.5 19L33 31" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <span>منوی دسترسی سریع</span>
-        </div>
-        <button type="button" class="mobile-drawer-close" id="mobileCloseBtn" aria-label="بستن منو">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
-      <nav class="mobile-nav">
-        <ul class="mobile-nav-list">
-          <li><a href="index.html#hero" class="mobile-nav-link">صفحه اصلی</a></li>
-          <li><a href="index.html#activities" class="mobile-nav-link">گزارش فعالیت‌ها</a></li>
-          <li><a href="contact.html" class="mobile-nav-link active">تماس با ما</a></li>
-        </ul>
-      </nav>
-
-      <div class="mobile-drawer-footer">
-        <a href="login.html" class="btn btn-primary btn-block">
-          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-            <polyline points="10 17 15 12 10 7" />
-            <line x1="15" y1="12" x2="3" y2="12" />
-          </svg>
-          <span>ورود به پنل کارمندان</span>
-        </a>
-      </div>
-    </div>
   </header>
+
+  <!-- منوی کشویی واکنش‌گرا برای موبایل (قرارگیری مستقیم در body جهت حل کامل بک‌گراند) -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="mobile-drawer-title">
+        <div class="logo-icon-wrapper-sm">
+          <svg viewBox="0 0 44 44" fill="none" width="30" height="30" aria-hidden="true">
+            <rect width="44" height="44" rx="10" fill="#1d4ed8" />
+            <path d="M12 31L19 16L24.5 24.5L28.5 19L33 31" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <span>منوی دسترسی سریع</span>
+      </div>
+      <button type="button" class="mobile-drawer-close" id="mobileCloseBtn" aria-label="بستن منو">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html#hero" class="mobile-nav-link">صفحه اصلی</a></li>
+        <li><a href="index.html#activities" class="mobile-nav-link">گزارش فعالیت‌ها</a></li>
+        <li><a href="contact.html" class="mobile-nav-link active">تماس با ما</a></li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer-footer">
+      <a href="login.html" class="btn btn-primary btn-block">
+        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+          <polyline points="10 17 15 12 10 7" />
+          <line x1="15" y1="12" x2="3" y2="12" />
+        </svg>
+        <span>ورود به پنل کارمندان</span>
+      </a>
+    </div>
+  </aside>
 
   <!-- محتوای اصلی صفحه تماس با ما (Main Content) -->
   <main class="site-main" id="siteMain">
