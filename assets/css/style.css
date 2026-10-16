@@ -2102,27 +2102,30 @@ ul, ol {
   max-width: 600px;
 }
 
-/* ویجت زمان زنده و مدت حضور */
+/* ویجت زمان زنده سامانه (نمایش افقی روبه‌روی هم) */
 .welcome-live-widget {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
   border-radius: var(--radius-lg);
-  padding: 1.25rem 1.6rem;
+  padding: 0.85rem 1.4rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.65rem;
-  min-width: 250px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.95rem;
+  width: fit-content;
   z-index: 1;
 }
 
 .live-clock-label {
-  font-size: 0.78rem;
-  color: #94a3b8;
+  font-size: 0.88rem;
+  color: #cbd5e1;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .live-clock-time {
@@ -2130,37 +2133,36 @@ ul, ol {
   font-weight: 800;
   color: #38bdf8;
   direction: ltr;
-  letter-spacing: 1px;
-}
-
-.live-session-tag {
-  font-size: 0.82rem;
-  color: #a7f3d0;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ساختار شبکه داشبورد (ستون چپ و راست) */
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 1.85rem;
+  grid-template-columns: 310px minmax(0, 1fr);
+  gap: 1.5rem;
   align-items: start;
   margin-bottom: 3.5rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.dashboard-sidebar-column {
+  min-width: 0;
+  width: 100%;
 }
 
 /* ستون راست / کارت پروفایل کاربر */
 .profile-card {
   background: #ffffff;
   border-radius: var(--radius-xl);
-  padding: 2rem;
+  padding: 1.75rem 1.5rem;
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .profile-card-header {
@@ -2251,16 +2253,22 @@ ul, ol {
 .dashboard-content-column {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.75rem;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* کارت پایش حضور در شرکت و سایت */
 .presence-card {
   background: #ffffff;
   border-radius: var(--radius-xl);
-  padding: 2rem;
+  padding: 1.5rem;
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .section-card-header {
@@ -2269,13 +2277,13 @@ ul, ol {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #f1f5f9;
 }
 
 .section-card-title {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--color-primary-900);
   display: flex;
@@ -2295,19 +2303,23 @@ ul, ol {
 /* شبکه آمارهای سریع حضور */
 .presence-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.15rem;
-  margin-bottom: 1.75rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .presence-stat-box {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: var(--radius-lg);
-  padding: 1.15rem;
+  padding: 1rem 0.85rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  min-width: 0;
+  box-sizing: border-box;
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
@@ -2317,108 +2329,153 @@ ul, ol {
 }
 
 .presence-stat-title {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .presence-stat-number {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: var(--color-primary-900);
+  color: #0f172a !important; /* رنگ مشکی یکدست برای تمام باکس‌ها طبق خواسته کاربر */
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .presence-stat-highlight {
-  color: #10b981;
+  color: #0f172a !important;
 }
 
-/* جدول گزارش تردد و حضور روزانه */
-.presence-table-wrapper {
+/* جدول گزارش تردد و حضور روزانه به سبک کاربرگ مایکروسافت اکسل */
+.excel-table-wrapper {
   overflow-x: auto;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-lg);
+  -webkit-overflow-scrolling: touch;
+  border: 1.5px solid #107c41;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(16, 124, 65, 0.08);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.presence-table {
+.excel-presence-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.86rem;
   text-align: right;
-  font-size: 0.9rem;
+  min-width: 550px; /* اندازه کاملاً استاندارد برای جا گرفتن بدون بیرون زدن */
 }
 
-.presence-table th {
-  background: #f8fafc;
-  color: var(--color-primary-600);
+.excel-presence-table th {
+  background: #217346; /* سبز کلاسیک هدر اکسل */
+  color: #ffffff;
   font-weight: 700;
-  padding: 0.85rem 1.1rem;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #1a5c38;
+  white-space: nowrap !important; /* یک‌خطی ماندن هدر */
+  letter-spacing: -0.01em;
 }
 
-.presence-table td {
-  padding: 0.95rem 1.1rem;
-  border-bottom: 1px solid #f1f5f9;
-  color: var(--color-primary-900);
+.excel-presence-table td {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #d4d4d4; /* خطوط شبکه‌ای استاندارد اکسل */
+  color: #1f2937;
+  white-space: nowrap !important; /* تضمین مطلق عدم شکستن سطر */
+  vertical-align: middle;
 }
 
-.presence-table tr:last-child td {
-  border-bottom: none;
+/* ردیف‌های راه‌راه اکسل */
+.excel-presence-table tbody tr:nth-child(even) {
+  background-color: #f7faf8;
 }
 
-.presence-table tr:hover td {
-  background: #f8fafc;
+.excel-presence-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
 }
 
-.badge-present-active {
-  background: #ecfdf5;
-  color: #047857;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-full);
-  font-size: 0.78rem;
+.excel-presence-table tbody tr:hover td {
+  background-color: #e9f5ee !important;
+}
+
+/* ردیف روز جاری (امروز) در جدول اکسل */
+.excel-row-today td {
+  background-color: #e2efda !important;
   font-weight: 600;
+  border-color: #b8dcb0 !important;
+}
+
+.excel-cell-time {
+  font-family: monospace;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* بج‌های وضعیت جدول: بدون شکستگی و به سبک Conditional Formatting اکسل */
+.badge-present-done,
+.badge-overtime,
+.badge-present-active {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  white-space: nowrap !important; /* تیک و متن همگی در یک خط پیوسته */
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  padding: 0.25rem 0.65rem !important;
+  border-radius: 4px !important;
 }
 
 .badge-present-done {
-  background: #f0fdf4;
-  color: #15803d;
-  padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-full);
-  font-size: 0.78rem;
-  font-weight: 600;
+  background: #d4edda !important;
+  color: #155724 !important;
+  border: 1px solid #c3e6cb !important;
 }
 
 .badge-overtime {
-  background: #fffbeb;
-  color: #b45309;
-  padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-full);
-  font-size: 0.78rem;
-  font-weight: 600;
+  background: #fff3cd !important;
+  color: #856404 !important;
+  border: 1px solid #ffeeba !important;
+}
+
+.badge-present-active {
+  background: #d1e7dd !important;
+  color: #0f5132 !important;
+  border: 1px solid #badbcc !important;
 }
 
 /* بخش فعالیت‌های شخص */
 .personal-activities-card {
   background: #ffffff;
   border-radius: var(--radius-xl);
-  padding: 2rem;
+  padding: 1.5rem;
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .activities-list-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .my-activity-item {
   border: 1px solid #e2e8f0;
   border-radius: var(--radius-lg);
-  padding: 1.25rem 1.45rem;
+  padding: 1.15rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.75rem;
   background: #ffffff;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   transition: all var(--transition-fast);
 }
 
@@ -2434,12 +2491,16 @@ ul, ol {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .my-activity-title {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--color-primary-900);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .my-activity-dept {
@@ -2454,6 +2515,8 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .my-progress-bar {
@@ -2462,6 +2525,7 @@ ul, ol {
   background: #f1f5f9;
   border-radius: var(--radius-full);
   overflow: hidden;
+  min-width: 50px;
 }
 
 .my-progress-fill {
@@ -2494,8 +2558,11 @@ ul, ol {
   background: #f8fafc;
   border: 1.5px dashed #cbd5e1;
   border-radius: var(--radius-lg);
-  padding: 1.45rem;
-  margin-top: 1.5rem;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .add-activity-header {
@@ -2510,43 +2577,80 @@ ul, ol {
 
 .add-activity-form {
   display: grid;
-  grid-template-columns: 2fr 1.2fr 1fr auto;
-  gap: 0.85rem;
+  grid-template-columns: 2fr 1.2fr 0.8fr auto;
+  gap: 0.75rem;
   align-items: end;
+  min-width: 0;
+  width: 100%;
 }
 
-/* مدیاکوئری‌های صفحه لاگین و داشبورد */
-@media (max-width: 1024px) {
+.add-activity-form .form-group {
+  min-width: 0;
+}
+
+.add-activity-form .form-input,
+.add-activity-form .form-select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* مدیاکوئری‌های ریسپانسیو اختصاصی داشبورد (پوشش کامل زوم‌های ۱۰۰٪ و ۱۱۰٪) */
+@media (max-width: 1200px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dashboard-sidebar-column {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .presence-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .dashboard-welcome-banner {
     flex-direction: column;
     align-items: flex-start;
-    padding: 1.8rem;
+    padding: 1.75rem;
   }
 
   .welcome-live-widget {
     width: 100%;
+    justify-content: space-between;
+  }
+
+  .add-activity-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .add-activity-form button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .presence-stats-grid {
+    grid-template-columns: 1fr;
   }
 
   .add-activity-form {
     grid-template-columns: 1fr;
+  }
+
+  .presence-card,
+  .personal-activities-card {
+    padding: 1.25rem 1rem;
   }
 }
 
 @media (max-width: 640px) {
   .login-card {
     padding: 1.75rem 1.4rem;
-  }
-
-  .presence-stats-grid {
-    grid-template-columns: 1fr;
   }
 
   .dashboard-topbar-container {
@@ -2560,11 +2664,6 @@ ul, ol {
   }
 
   .profile-card {
-    padding: 1.5rem 1.25rem;
-  }
-
-  .presence-card,
-  .personal-activities-card {
     padding: 1.5rem 1.25rem;
   }
 }

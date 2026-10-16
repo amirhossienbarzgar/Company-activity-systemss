@@ -45,16 +45,9 @@
           </div>
           <div class="user-quick-info">
             <span class="user-quick-name">امیرحسین برزگر</span>
-            <span class="user-quick-role">مدیر ارشد سامانه (amir)</span>
+            <span class="user-quick-role">مدیریت شرکت</span>
           </div>
         </div>
-
-        <a href="index.html" class="btn btn-hero-secondary" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;" title="مشاهده صفحه اصلی">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          </svg>
-          <span>سایت اصلی</span>
-        </a>
 
         <button type="button" class="btn-dashboard-logout" id="logoutBtn" title="خروج از حساب">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -73,29 +66,22 @@
     <!-- بنر خوش‌آمدگویی و ویجت زمان زنده -->
     <section class="dashboard-welcome-banner">
       <div class="welcome-info">
-        <div class="welcome-badge">
-          <span>● دسترسی سطح ۱: مدیریت ارشد و راهبری پایش</span>
-        </div>
         <h1 class="welcome-title">خوش آمدید، جناب آقای امیرحسین برزگر</h1>
         <p class="welcome-desc">
           داشبورد ارزیابی زنده عملکرد، کارنامه حضور و غیاب، پایش تردد روزانه در شرکت و سامانه، و مدیریت مأموریت‌های فردی شما.
         </p>
       </div>
 
-      <!-- ویجت زمان و مدت حضور در سامانه -->
+      <!-- ویجت زمان زنده سامانه (نمایش روبه‌رو و افقی) -->
       <div class="welcome-live-widget">
         <span class="live-clock-label">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <polyline points="12 6 12 12 16 14"></polyline>
           </svg>
           <span>زمان زنده سامانه:</span>
         </span>
         <div class="live-clock-time" id="liveClockDisplay">۰۰:۰۰:۰۰</div>
-        <div class="live-session-tag">
-          <span>⏱️ مدت حضور در سایت امروز:</span>
-          <strong id="liveSessionTimer" dir="ltr" style="font-family: monospace; font-size: 0.95rem;">۰ ساعت و ۰ دقیقه</strong>
-        </div>
       </div>
     </section>
 
@@ -110,7 +96,7 @@
               <span class="profile-avatar-status" title="وضعیت: آنلاین"></span>
             </div>
             <h2 class="profile-name">امیرحسین برزگر</h2>
-            <span class="profile-role-badge">مدیر ارشد پایش و عملکرد</span>
+            <span class="profile-role-badge">مدیریت شرکت</span>
           </div>
 
           <div class="profile-info-list">
@@ -132,7 +118,7 @@
               <span class="profile-info-label">
                 <span>واحد سازمانی:</span>
               </span>
-              <span class="profile-info-val">مدیریت ارشد و راهبری</span>
+              <span class="profile-info-val">مدیریت شرکت</span>
             </div>
 
             <div class="profile-info-item">
@@ -154,13 +140,6 @@
                 <span>نوع قرارداد:</span>
               </span>
               <span class="profile-info-val" style="color: #059669;">تمام‌وقت / رسمی</span>
-            </div>
-
-            <div class="profile-info-item">
-              <span class="profile-info-label">
-                <span>ساعت ورود امروز:</span>
-              </span>
-              <span class="profile-info-val" dir="ltr">۰۸:۰۰ صبح</span>
             </div>
 
             <div class="profile-info-item">
@@ -187,44 +166,38 @@
               </svg>
               <span>گزارش مدت حضور در شرکت و کارکرد هفتگی</span>
             </h2>
-            <span class="section-card-tag">پایش برخط دستگاه تردد و سشن</span>
           </div>
 
-          <!-- خلاصه آماری حضور ماه جاری -->
+          <!-- خلاصه آماری ۴ باکس با متن مشکی یکدست -->
           <div class="presence-stats-grid">
             <div class="presence-stat-box">
               <span class="presence-stat-title">حضور امروز در شرکت</span>
-              <span class="presence-stat-number presence-stat-highlight" id="todayPresenceTime">۷ ساعت و ۴۵ دقیقه</span>
-              <span style="font-size: 0.76rem; color: #64748b;">ورود: ۰۸:۰۰ | وضعیت: فعال</span>
+              <span class="presence-stat-number" id="todayPresenceTime">۷ ساعت و ۴۵ دقیقه</span>
             </div>
 
             <div class="presence-stat-box">
               <span class="presence-stat-title">کل کارکرد هفته جاری</span>
               <span class="presence-stat-number">۴۲ ساعت و ۱۰ دقیقه</span>
-              <span style="font-size: 0.76rem; color: #10b981;">مطابق سقف استاندارد ۴۰ساعته</span>
             </div>
 
             <div class="presence-stat-box">
               <span class="presence-stat-title">اضافه کار محاسبه‌شده</span>
-              <span class="presence-stat-number" style="color: #b45309;">+۲ ساعت و ۱۰ دقیقه</span>
-              <span style="font-size: 0.76rem; color: #64748b;">دارای تاییدیه سرپرستی</span>
+              <span class="presence-stat-number">+۲ ساعت و ۱۰ دقیقه</span>
             </div>
 
             <div class="presence-stat-box">
-              <span class="presence-stat-title">نرخ انضباط تردد</span>
-              <span class="presence-stat-number" style="color: #0284c7;">۱۰۰٪</span>
-              <span style="font-size: 0.76rem; color: #10b981;">بدون تاخیر یا غیبت</span>
+              <span class="presence-stat-title">پروژه‌های یک ماه گذشته</span>
+              <span class="presence-stat-number">۱۲ پروژه</span>
             </div>
           </div>
 
-          <!-- جدول روزهای هفته و مدت حضور در هر روز -->
-          <div class="presence-table-wrapper">
-            <table class="presence-table">
+          <!-- جدول اکسلی روزهای هفته و کارکرد روزانه -->
+          <div class="presence-table-wrapper excel-table-wrapper">
+            <table class="presence-table excel-presence-table">
               <thead>
                 <tr>
                   <th>روز</th>
                   <th>تاریخ</th>
-                  <th>زمان ورود</th>
                   <th>زمان خروج</th>
                   <th>مدت کل حضور در شرکت</th>
                   <th>حضور در سایت</th>
@@ -235,8 +208,7 @@
                 <tr>
                   <td><strong>شنبه</strong></td>
                   <td>۱۴۰۵/۰۷/۱۴</td>
-                  <td dir="ltr">۰۸:۰۲</td>
-                  <td dir="ltr">۱۶:۲۲</td>
+                  <td dir="ltr" class="excel-cell-time">۱۶:۲۲</td>
                   <td><strong>۸ ساعت و ۲۰ دقیقه</strong></td>
                   <td>۵ ساعت و ۱۵ دقیقه</td>
                   <td><span class="badge-present-done">تکمیل و تاییدشده ✓</span></td>
@@ -244,8 +216,7 @@
                 <tr>
                   <td><strong>یکشنبه</strong></td>
                   <td>۱۴۰۵/۰۷/۱۵</td>
-                  <td dir="ltr">۰۷:۵۵</td>
-                  <td dir="ltr">۱۷:۰۵</td>
+                  <td dir="ltr" class="excel-cell-time">۱۷:۰۵</td>
                   <td><strong>۹ ساعت و ۱۰ دقیقه</strong></td>
                   <td>۶ ساعت و ۱۰ دقیقه</td>
                   <td><span class="badge-overtime">اضافه کار (+۱ ساعت و ۱۰ دقیقه)</span></td>
@@ -253,8 +224,7 @@
                 <tr>
                   <td><strong>دوشنبه</strong></td>
                   <td>۱۴۰۵/۰۷/۱۶</td>
-                  <td dir="ltr">۰۸:۰۵</td>
-                  <td dir="ltr">۱۶:۲۰</td>
+                  <td dir="ltr" class="excel-cell-time">۱۶:۲۰</td>
                   <td><strong>۸ ساعت و ۱۵ دقیقه</strong></td>
                   <td>۴ ساعت و ۴۵ دقیقه</td>
                   <td><span class="badge-present-done">تکمیل و تاییدشده ✓</span></td>
@@ -262,8 +232,7 @@
                 <tr>
                   <td><strong>سه‌شنبه</strong></td>
                   <td>۱۴۰۵/۰۷/۱۷</td>
-                  <td dir="ltr">۰۸:۰۰</td>
-                  <td dir="ltr">۱۶:۳۰</td>
+                  <td dir="ltr" class="excel-cell-time">۱۶:۳۰</td>
                   <td><strong>۸ ساعت و ۳۰ دقیقه</strong></td>
                   <td>۵ ساعت و ۵۰ دقیقه</td>
                   <td><span class="badge-present-done">تکمیل و تاییدشده ✓</span></td>
@@ -271,19 +240,17 @@
                 <tr>
                   <td><strong>چهارشنبه</strong></td>
                   <td>۱۴۰۵/۰۷/۱۸</td>
-                  <td dir="ltr">۰۸:۰۱</td>
-                  <td dir="ltr">۱۶:۱۱</td>
+                  <td dir="ltr" class="excel-cell-time">۱۶:۱۱</td>
                   <td><strong>۸ ساعت و ۱۰ دقیقه</strong></td>
                   <td>۴ ساعت و ۳۰ دقیقه</td>
                   <td><span class="badge-present-done">تکمیل و تاییدشده ✓</span></td>
                 </tr>
-                <tr style="background: #f0fdf4;">
-                  <td><strong style="color: #047857;">پنج‌شنبه (امروز)</strong></td>
+                <tr class="excel-row-today">
+                  <td><strong>پنج‌شنبه (امروز)</strong></td>
                   <td>۱۴۰۵/۰۷/۱۹</td>
-                  <td dir="ltr">۰۸:۰۰</td>
-                  <td dir="ltr"><span id="tableExitLiveTime">در حال حضور...</span></td>
-                  <td><strong id="tableTodayCompanyTime" style="color: #059669;">در حال پایش برخط...</strong></td>
-                  <td><span id="tableTodaySiteTime" style="color: #1d4ed8; font-weight: 700;">در حال محاسبه...</span></td>
+                  <td dir="ltr" class="excel-cell-time"><span id="tableExitLiveTime">در حال حضور...</span></td>
+                  <td><strong id="tableTodayCompanyTime">در حال پایش برخط...</strong></td>
+                  <td><span id="tableTodaySiteTime">در حال محاسبه...</span></td>
                   <td><span class="badge-present-active">حضور فعال برخط 🟢</span></td>
                 </tr>
               </tbody>
@@ -331,7 +298,7 @@
               <div class="my-activity-top">
                 <div>
                   <h3 class="my-activity-title">هماهنگی و هدایت جلسه جامع ارزیابی عملکرد سه‌ماهه سوم دپارتمان‌ها</h3>
-                  <span class="my-activity-dept">واحد مدیریت ارشد و منابع انسانی • ثبت: ۱۴۰۵/۰۷/۱۷</span>
+                  <span class="my-activity-dept">مدیریت شرکت و منابع انسانی • ثبت: ۱۴۰۵/۰۷/۱۷</span>
                 </div>
                 <span class="status-pill" style="background: #eff6ff; color: #1d4ed8; border: 1px solid rgba(29, 78, 216, 0.3);">
                   <span class="status-dot"></span>
@@ -426,7 +393,7 @@
                 <label for="newDept" class="form-label" style="font-size: 0.82rem;">واحد همکار</label>
                 <select id="newDept" class="form-select" style="padding: 0.55rem 0.85rem; font-size: 0.88rem;">
                   <option value="واحد فناوری اطلاعات">واحد فناوری اطلاعات</option>
-                  <option value="واحد مدیریت ارشد">واحد مدیریت ارشد</option>
+                  <option value="مدیریت شرکت">مدیریت شرکت</option>
                   <option value="ارزیابی عملکرد">ارزیابی عملکرد</option>
                   <option value="منابع انسانی">منابع انسانی</option>
                   <option value="امور حقوقی">امور حقوقی</option>
