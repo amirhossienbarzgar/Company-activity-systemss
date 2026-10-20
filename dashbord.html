@@ -258,6 +258,182 @@
           </div>
         </div>
 
+        <!-- ۱.۵. بخش محرمانه: تعریف و مدیریت کارمندان جهت انجام پروژه‌ها (ویژه مدیر سایت) -->
+        <div class="manager-vault-card" id="managerVaultSection">
+          <div class="vault-header-wrap">
+            <div class="vault-title-group">
+              <div class="vault-icon-circle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <div>
+                <h2 class="vault-title">بخش محرمانه: تعریف و مدیریت کارمندان جهت انجام پروژه</h2>
+                <p class="vault-subtitle">تنها مدیر سایت مجاز به ایجاد کارمند برای انجام پروژه است • حفظ محرمانگی و امنیت اسناد پرسنلی</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="confidential-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>دسترسی انحصاری مدیریت ارشد</span>
+              </span>
+              <button type="button" class="btn btn-secondary" id="btnExportVaultBackup" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;" title="پشتیبان‌گیری از داده‌ها جهت عدم گم شدن اطلاعات">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>پشتیبان‌گیری امن (JSON)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- پیام توجه محرمانگی و امنیتی -->
+          <div class="vault-security-notice" role="alert">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <div>
+              <strong>سیاست محرمانگی اطلاعات:</strong> مشخصات و رمز عبور کارمندان جزو داده‌های بسیار حساس شرکت است. اطلاعات ثبت‌شده در این پنل به صورت امن ذخیره گردیده و کارمند تعریف‌شده می‌تواند از طریق پرتال کارمندان وارد صفحه پروفایل شخصی خود شود و قراردادها و مراحل پروژه‌هایش را مدیریت کند.
+            </div>
+          </div>
+
+          <!-- فرم ثبت کارمند جدید توسط مدیر -->
+          <div class="vault-form-box">
+            <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary-900); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.45rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <line x1="20" y1="8" x2="20" y2="14"></line>
+                <line x1="23" y1="11" x2="17" y2="11"></line>
+              </svg>
+              <span>تعریف کارمند جدید و صدور اطلاعات ورود</span>
+            </h3>
+
+            <form id="createEmployeeForm" novalidate>
+              <div class="vault-form-grid">
+                <div class="vault-field-group">
+                  <label for="empFullName" class="vault-label">
+                    <span>نام و نام خانوادگی کارمند</span>
+                    <span class="vault-label-required">*</span>
+                  </label>
+                  <input type="text" id="empFullName" class="vault-input" placeholder="مثال: سارا محمدی" required>
+                </div>
+
+                <div class="vault-field-group">
+                  <label for="empEmail" class="vault-label">
+                    <span>پست الکترونیک (نام کاربری ورود)</span>
+                    <span class="vault-label-required">*</span>
+                  </label>
+                  <input type="email" id="empEmail" class="vault-input" placeholder="sara@company.ir" dir="ltr" required>
+                </div>
+
+                <div class="vault-field-group">
+                  <label for="empPhone" class="vault-label">
+                    <span>شماره همراه / تماس</span>
+                    <span class="vault-label-required">*</span>
+                  </label>
+                  <input type="tel" id="empPhone" class="vault-input" placeholder="09121234567" dir="ltr" required>
+                </div>
+
+                <div class="vault-field-group">
+                  <label for="empPassword" class="vault-label">
+                    <span>رمز عبور اختصاصی کارمند</span>
+                    <span class="vault-label-required">*</span>
+                  </label>
+                  <div class="password-input-wrap">
+                    <input type="password" id="empPassword" class="vault-input" placeholder="حداقل ۶ کاراکتر" dir="ltr" required>
+                    <button type="button" class="btn-toggle-pwd" id="toggleEmpPwdBtn" title="نمایش / مخفی‌سازی رمز">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="vault-field-group">
+                  <label for="empDepartment" class="vault-label">
+                    <span>دپارتمان و حوزه فعالیت</span>
+                  </label>
+                  <select id="empDepartment" class="vault-input">
+                    <option value="توسعه و برنامه‌نویسی نرم‌افزار">توسعه و برنامه‌نویسی نرم‌افزار</option>
+                    <option value="طراحی رابط کاربری و تجربه کاربری (UI/UX)">طراحی رابط کاربری و تجربه کاربری (UI/UX)</option>
+                    <option value="مدیریت پروژه و تحلیل سیستم">مدیریت پروژه و تحلیل سیستم</option>
+                    <option value="امنیت شبکه و زیرساخت">امنیت شبکه و زیرساخت</option>
+                    <option value="هوش مصنوعی و داده‌کاوی">هوش مصنوعی و داده‌کاوی</option>
+                    <option value="پشتیبانی فنی و استقرار">پشتیبانی فنی و استقرار</option>
+                  </select>
+                </div>
+
+                <div class="vault-field-group">
+                  <label for="empCode" class="vault-label">
+                    <span>کد پرسنلی اختصاصی</span>
+                  </label>
+                  <input type="text" id="empCode" class="vault-input" placeholder="EMP-2041" dir="ltr">
+                </div>
+              </div>
+
+              <div class="vault-form-actions">
+                <button type="button" class="btn btn-secondary" id="btnGenRandomPwd" style="font-size: 0.82rem; padding: 0.5rem 0.95rem;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                  </svg>
+                  <span>تولید خودکار رمز عبور امن</span>
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="btnSubmitEmployee" style="padding: 0.65rem 1.5rem; font-weight: 700;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>ثبت کارمند و فعال‌سازی دسترسی محرمانه</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- لیست کارمندان ثبت‌شده در سامانه -->
+          <div>
+            <div class="vault-list-header">
+              <h3 class="vault-list-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>کارمندان فعال و ثبت‌شده در سامانه</span>
+              </h3>
+              <span id="registeredEmployeesCountBadge" class="section-card-tag">۱ کارمند ثبت‌شده</span>
+            </div>
+
+            <div class="vault-table-container">
+              <table class="vault-table">
+                <thead>
+                  <tr>
+                    <th>کارمند</th>
+                    <th>پست الکترونیک (نام کاربری)</th>
+                    <th>شماره تماس</th>
+                    <th>رمز عبور محرمانه</th>
+                    <th>پروژه‌ها</th>
+                    <th>وضعیت</th>
+                    <th>عملیات مدیریت</th>
+                  </tr>
+                </thead>
+                <tbody id="employeesTableBody">
+                  <!-- محتوا به صورت پویا با جاوااسکریپت تزریق می‌شود -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
         <!-- ۲. بخش فعالیت‌های شخص (Personal Activities) -->
         <div class="personal-activities-card">
           <div class="section-card-header">
@@ -425,150 +601,7 @@
     </div>
   </footer>
 
-  <!-- اسکریپت زنده پایش ساعت و فعالیت‌ها -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // ۱. ساعت زنده بالای صفحه
-      const liveClockDisplay = document.getElementById('liveClockDisplay');
-      const updateClock = () => {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        if (liveClockDisplay) {
-          liveClockDisplay.textContent = `${hours}:${minutes}:${seconds}`;
-        }
-      };
-      updateClock();
-      setInterval(updateClock, 1000);
-
-      // ۲. پایش تایمر زنده مدت حضور در سایت امروز
-      let sessionSeconds = parseInt(sessionStorage.getItem('site_session_seconds') || '3680', 10);
-      const sessionTimerEl = document.getElementById('liveSessionTimer');
-      const todaySiteTimeEl = document.getElementById('tableTodaySiteTime');
-
-      const formatSessionDuration = (totalSec) => {
-        const h = Math.floor(totalSec / 3600);
-        const m = Math.floor((totalSec % 3600) / 60);
-        const s = totalSec % 60;
-        return `${h} ساعت و ${m} دقیقه و ${s} ثانیه`;
-      };
-
-      const formatShortDuration = (totalSec) => {
-        const h = Math.floor(totalSec / 3600);
-        const m = Math.floor((totalSec % 3600) / 60);
-        return `${h} ساعت و ${m} دقیقه`;
-      };
-
-      const updateSessionTimer = () => {
-        sessionSeconds++;
-        sessionStorage.setItem('site_session_seconds', sessionSeconds.toString());
-        if (sessionTimerEl) {
-          sessionTimerEl.textContent = formatShortDuration(sessionSeconds);
-        }
-        if (todaySiteTimeEl) {
-          todaySiteTimeEl.textContent = formatShortDuration(sessionSeconds);
-        }
-      };
-      updateSessionTimer();
-      setInterval(updateSessionTimer, 1000);
-
-      // ۳. محاسبه برخط مدت حضور در شرکت امروز (ورود از ساعت ۰۸:۰۰ صبح)
-      const updateCompanyPresence = () => {
-        const now = new Date();
-        const entryHour = 8;
-        const entryMinute = 0;
-        let hoursWorked = now.getHours() - entryHour;
-        let minutesWorked = now.getMinutes() - entryMinute;
-
-        if (minutesWorked < 0) {
-          hoursWorked -= 1;
-          minutesWorked += 60;
-        }
-        if (hoursWorked < 0) hoursWorked = 0;
-
-        const presenceText = `${hoursWorked} ساعت و ${minutesWorked} دقیقه`;
-        const todayPresenceEl = document.getElementById('todayPresenceTime');
-        const tableCompanyEl = document.getElementById('tableTodayCompanyTime');
-        const tableExitEl = document.getElementById('tableExitLiveTime');
-
-        if (todayPresenceEl) todayPresenceEl.textContent = presenceText;
-        if (tableCompanyEl) tableCompanyEl.textContent = presenceText;
-        if (tableExitEl) tableExitEl.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} (برخط)`;
-      };
-      updateCompanyPresence();
-      setInterval(updateCompanyPresence, 30000);
-
-      // ۴. مدیریت خروج از حساب
-      const logoutBtn = document.getElementById('logoutBtn');
-      if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-          if (confirm('آیا از خروج از پنل کارمندان اطمینان دارید؟')) {
-            sessionStorage.removeItem('portalAdminUser');
-            window.location.href = 'login.html';
-          }
-        });
-      }
-
-      // ۵. فرم افزودن فعالیت جدید به لیست
-      const newForm = document.getElementById('newActivityForm');
-      const listContainer = document.getElementById('myActivitiesList');
-      const countTag = document.getElementById('activityCountTag');
-
-      if (newForm && listContainer) {
-        newForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const title = document.getElementById('newTitle').value.trim();
-          const dept = document.getElementById('newDept').value;
-          const progress = parseInt(document.getElementById('newProgress').value, 10) || 0;
-
-          if (!title) return;
-
-          let statusClass = 'progress-amber';
-          let statusText = 'برنامه‌ریزی‌شده';
-          let statusBg = 'background: #fffbeb; color: #b45309; border: 1px solid rgba(245, 158, 11, 0.3);';
-
-          if (progress >= 100) {
-            statusClass = 'progress-green';
-            statusText = 'تکمیل‌شده';
-            statusBg = 'background: #ecfdf5; color: #047857; border: 1px solid rgba(16, 185, 129, 0.3);';
-          } else if (progress > 30) {
-            statusClass = 'progress-blue';
-            statusText = 'در حال انجام';
-            statusBg = 'background: #eff6ff; color: #1d4ed8; border: 1px solid rgba(29, 78, 216, 0.3);';
-          }
-
-          const newItem = document.createElement('div');
-          newItem.className = 'my-activity-item';
-          newItem.innerHTML = `
-            <div class="my-activity-top">
-              <div>
-                <h3 class="my-activity-title">${title}</h3>
-                <span class="my-activity-dept">${dept} • ثبت: امروز</span>
-              </div>
-              <span class="status-pill" style="${statusBg}">
-                <span class="status-dot"></span>
-                <span>${statusText}</span>
-              </span>
-            </div>
-            <div class="my-activity-progress-wrap">
-              <div class="my-progress-bar">
-                <div class="my-progress-fill ${statusClass}" style="width: ${progress}%;"></div>
-              </div>
-              <span class="my-progress-text">${progress}٪</span>
-            </div>
-          `;
-
-          listContainer.prepend(newItem);
-          newForm.reset();
-
-          const totalItems = listContainer.querySelectorAll('.my-activity-item').length;
-          if (countTag) {
-            countTag.textContent = `${totalItems} مأموریت ثبت‌شده`;
-          }
-        });
-      }
-    });
-  </script>
+  <!-- اسکریپت اصلی پروژه -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

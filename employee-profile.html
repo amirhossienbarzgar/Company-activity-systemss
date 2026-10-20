@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="پرتال اختصاصی کارمند و مدیریت پروژه‌ها - سامانه یکپارچه فعالیت‌های شرکت">
+  <title>پروفایل و مدیریت پروژه‌ها | پرتال کارمندان</title>
+
+  <!-- فونت وزیرمتن -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+
+  <!-- استایل‌های اصلی پروژه -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="dashboard-page-body" id="employeeProfileApp">
+
+  <!-- هدر ناوبری بالای پرتال کارمند -->
+  <header class="dashboard-topbar">
+    <div class="container dashboard-topbar-container">
+      <a href="index.html" class="dashboard-brand-link" title="بازگشت به صفحه اصلی سایت">
+        <div class="logo-icon-wrapper-sm">
+          <svg viewBox="0 0 44 44" fill="none" width="34" height="34" aria-hidden="true">
+            <rect width="44" height="44" rx="10" fill="#1d4ed8" />
+            <path d="M12 31L19 16L24.5 24.5L28.5 19L33 31" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="28.5" cy="19" r="2.2" fill="#38bdf8" />
+            <circle cx="19" cy="16" r="2.2" fill="#67e8f9" />
+          </svg>
+        </div>
+        <div>
+          <span style="font-weight: 800; color: var(--color-primary-900); font-size: 1.05rem;">پرتال اختصاصی کارمند</span>
+          <span class="dashboard-brand-badge">مدیریت پروژه‌ها</span>
+        </div>
+      </a>
+
+      <!-- اطلاعات سریع کارمند و دکمه خروج -->
+      <div class="dashboard-topbar-actions">
+        <div class="user-quick-profile">
+          <div class="user-quick-avatar">
+            <span class="emp-render-avatar">E</span>
+            <span class="user-online-dot" title="وضعیت: آنلاین"></span>
+          </div>
+          <div class="user-quick-info">
+            <span class="user-quick-name emp-render-name">کارمند شرکت</span>
+            <span class="user-quick-role emp-render-dept">دپارتمان تخصصی</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-dashboard-logout" id="empLogoutBtn" title="خروج از حساب">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>خروج</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- محتوای اصلی پرتال کارمند -->
+  <main class="container" style="flex: 1 0 auto; padding-top: 1.25rem; padding-bottom: 2.5rem;">
+
+    <!-- بنر خوش‌آمدگویی و ویجت پویای رتبه و قدرت پروفایل -->
+    <section class="profile-strength-card">
+      <div class="profile-strength-header">
+        <div>
+          <h1 class="profile-strength-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>خوش آمدید، <span class="emp-render-name">همکار گرامی</span></span>
+          </h1>
+          <p class="profile-strength-desc">
+            پرتال پیشبرد پروژه‌ها و کارنامه عملکرد شما. در ابتدای کار، پروفایل شما در وضعیت پایه است و با ثبت قراردادها و تکمیل مراحل، رتبه و کارنامه شما قوی‌تر می‌گردد.
+          </p>
+        </div>
+        <div>
+          <span class="profile-level-badge" id="profileLevelBadge">سطح ۱: مقدماتی (پروفایل پایه)</span>
+        </div>
+      </div>
+
+      <div class="profile-strength-bar-wrap">
+        <span style="font-size: 0.82rem; font-weight: 700; color: #94a3b8; white-space: nowrap;">میزان قدرت و رتبه پروفایل:</span>
+        <div class="profile-strength-bar">
+          <div class="profile-strength-fill" id="profileStrengthFill" style="width: 20%;"></div>
+        </div>
+        <span class="profile-strength-num" id="profileStrengthNumber">۲۰٪</span>
+      </div>
+    </section>
+
+    <!-- ساختار دو ستونه: سایدبار اطلاعات شخصی، بدنه اصلی مدیریت پروژه‌ها -->
+    <div class="dashboard-grid">
+
+      <!-- ستون ۱: شناسنامه و اطلاعات شخصی کارمند -->
+      <aside class="dashboard-sidebar-column">
+        <!-- کارت مشخصات فردی -->
+        <div class="profile-card">
+          <div class="profile-card-header">
+            <div class="profile-avatar-big">
+              <span class="emp-render-avatar">E</span>
+              <span class="profile-avatar-status" title="وضعیت: آنلاین"></span>
+            </div>
+            <h2 class="profile-name emp-render-name">کارمند شرکت</h2>
+            <span class="profile-role-badge emp-render-dept">دپارتمان تخصصی</span>
+          </div>
+
+          <div class="profile-info-list">
+            <div class="profile-info-item">
+              <span class="profile-info-label">
+                <span>کد پرسنلی:</span>
+              </span>
+              <span class="profile-info-val emp-render-code" dir="ltr">EMP-0000</span>
+            </div>
+
+            <div class="profile-info-item">
+              <span class="profile-info-label">
+                <span>پست الکترونیک:</span>
+              </span>
+              <span class="profile-info-val emp-render-email" dir="ltr">employee@company.ir</span>
+            </div>
+
+            <div class="profile-info-item">
+              <span class="profile-info-label">
+                <span>شماره همراه:</span>
+              </span>
+              <span class="profile-info-val emp-render-phone" dir="ltr">09120000000</span>
+            </div>
+
+            <div class="profile-info-item">
+              <span class="profile-info-label">
+                <span>وضعیت دسترسی:</span>
+              </span>
+              <span class="profile-info-val" style="color: #059669; font-weight: 700;">پرسنل رسمی و فعال ✓</span>
+            </div>
+
+            <div class="profile-info-item">
+              <span class="profile-info-label">
+                <span>سطح امنیتی:</span>
+              </span>
+              <span class="profile-info-val" style="color: #1d4ed8;">ثبت‌شده توسط مدیریت سایت</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- کارت آمار خلاصه کارکرد کارمند -->
+        <div class="profile-card" style="margin-top: 1.25rem;">
+          <h3 style="font-size: 0.92rem; font-weight: 700; color: var(--color-primary-900); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.45rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>خلاصه کارنامه عملکرد</span>
+          </h3>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: var(--radius-md); border: 1px solid #e2e8f0;">
+              <span style="font-size: 0.82rem; color: #64748b;">کل پروژه‌های تعریف‌شده:</span>
+              <strong id="statActiveProjects" style="color: var(--color-primary-900);">۰ پروژه</strong>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: var(--radius-md); border: 1px solid #e2e8f0;">
+              <span style="font-size: 0.82rem; color: #64748b;">پروژه‌های ۱۰۰٪ تکمیل‌شده:</span>
+              <strong id="statCompletedProjects" style="color: #059669;">۰ پروژه</strong>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: var(--radius-md); border: 1px solid #e2e8f0;">
+              <span style="font-size: 0.82rem; color: #64748b;">میانگین پیشرفت مراحل:</span>
+              <strong id="statAvgProgress" style="color: #1d4ed8;">۰٪</strong>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ستون ۲: ثبت پروژه جدید با کارفرما + لیست و پایش مراحل پروژه‌ها -->
+      <section class="dashboard-content-column">
+
+        <!-- ۱. کارت ثبت قرارداد و پروژه جدید با کارفرما -->
+        <div class="contract-create-card">
+          <div class="section-card-header">
+            <h2 class="section-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+              </svg>
+              <span>ثبت پروژه و قرارداد جدید با کارفرما</span>
+            </h2>
+            <span class="section-card-tag">ایجاد پروژه اختصاصی</span>
+          </div>
+
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.6;">
+            اطلاعات قرارداد منعقد شده با کارفرما را در زیر ثبت نمایید و مراحل انجام پروژه را مشخص کنید تا بتوانید روند پیشرفت را مرحله به مرحله تیک بزنید.
+          </p>
+
+          <form id="newProjectContractForm" novalidate>
+            <!-- ردیف اطلاعات پایه قرارداد -->
+            <div class="vault-form-grid">
+              <div class="vault-field-group">
+                <label for="projTitle" class="vault-label">
+                  <span>عنوان پروژه</span>
+                  <span class="vault-label-required">*</span>
+                </label>
+                <input type="text" id="projTitle" class="vault-input" placeholder="مثال: توسعه سامانه مدیریت انبار و فاکتورها" required>
+              </div>
+
+              <div class="vault-field-group">
+                <label for="projClientName" class="vault-label">
+                  <span>نام کارفرما / سازمان طرف قرارداد</span>
+                  <span class="vault-label-required">*</span>
+                </label>
+                <input type="text" id="projClientName" class="vault-input" placeholder="مثال: شرکت بازرگانی سپهر" required>
+              </div>
+
+              <div class="vault-field-group">
+                <label for="projContractNo" class="vault-label">
+                  <span>شماره یا شناسه قرارداد</span>
+                </label>
+                <input type="text" id="projContractNo" class="vault-input" placeholder="مثال: CNT-1405-88" dir="ltr">
+              </div>
+
+              <div class="vault-field-group">
+                <label for="projContractDate" class="vault-label">
+                  <span>تاریخ انعقاد قرارداد</span>
+                </label>
+                <input type="text" id="projContractDate" class="vault-input" placeholder="۱۴۰۵/۰۷/۲۰">
+              </div>
+
+              <div class="vault-field-group">
+                <label for="projContractAmount" class="vault-label">
+                  <span>ارزش و مبلغ قرارداد (تومان)</span>
+                </label>
+                <input type="text" id="projContractAmount" class="vault-input" placeholder="مثال: ۶۵,۰۰۰,۰۰۰ تومان">
+              </div>
+
+              <div class="vault-field-group">
+                <label for="projContractScope" class="vault-label">
+                  <span>موضوع و تعهدات کاری قرارداد</span>
+                </label>
+                <input type="text" id="projContractScope" class="vault-input" placeholder="شرح تعهدات و تحویل خدمات طبق توافق">
+              </div>
+            </div>
+
+            <!-- بخش فازها و مراحل انجام پروژه -->
+            <div class="milestones-builder-box">
+              <div class="milestones-builder-header">
+                <div>
+                  <h4 style="font-size: 0.92rem; font-weight: 700; color: var(--color-primary-900); margin-bottom: 0.15rem;">
+                    مراحل اجرایی پروژه (جهت محاسبه نوار پیشرفت و تیک‌زدن)
+                  </h4>
+                  <span style="font-size: 0.78rem; color: #64748b;">می‌توانید مراحل پیش‌فرض را ویرایش کرده یا مرحله جدید اضافه فرمایید:</span>
+                </div>
+                <button type="button" class="btn-add-stage" id="btnAddStageInput">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  <span>افزودن مرحله جدید</span>
+                </button>
+              </div>
+
+              <div id="milestoneInputsList">
+                <!-- مراحل به صورت داینامیک از جاوااسکریپت تزریق می‌شوند -->
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 1.25rem;">
+              <button type="submit" class="btn btn-primary" style="padding: 0.7rem 1.75rem; font-weight: 700;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>ثبت قرارداد و آغاز اجرای پروژه</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- ۲. بخش وضعیت اولیه خالی (Empty State) هنگام ورود اولیه کارمند -->
+        <div class="profile-empty-state" id="employeeEmptyState" style="display: none;">
+          <div class="empty-state-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+          </div>
+          <h3 class="empty-state-title">هنوز پروژه‌ای ثبت نکرده‌اید!</h3>
+          <p class="empty-state-desc">
+            پروفایل شما در ابتدای کار است. از فرم بالا برای ثبت اولین قرارداد منعقدشده خود با کارفرما استفاده فرمایید. با شروع پروژه و تیک زدن هر مرحله، نوار پیشرفت تکمیل شده و قدرت پروفایل شما افزایش می‌یابد.
+          </p>
+        </div>
+
+        <!-- ۳. کانتینر پروژه‌های کارمند و رهگیری مراحل و نوار پیشرفت -->
+        <div id="employeeProjectsContainer">
+          <!-- کارت‌های پروژه‌ها به صورت پویا با جاوااسکریپت تزریق می‌شوند -->
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- فوتر داشبورد -->
+  <footer style="background: #ffffff; border-top: 1px solid #e2e8f0; padding: 1.25rem 0; margin-top: auto;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: #64748b;">
+      <p style="margin: 0;">پرتال اختصاصی کارمندان • سامانه پایش و اجرای پروژه‌ها</p>
+      <div>
+        <a href="index.html" style="color: var(--color-brand-blue); text-decoration: none;">صفحه اصلی سایت</a>
+        <span style="margin: 0 0.5rem;">•</span>
+        <a href="contact.html" style="color: var(--color-brand-blue); text-decoration: none;">پشتیبانی شرکت</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- اسکریپت اصلی پروژه -->
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
